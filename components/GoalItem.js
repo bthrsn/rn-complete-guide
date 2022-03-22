@@ -1,24 +1,33 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 
 const GoalItem = (props) => {
   return (
-    <TouchableOpacity onPress={props.onDelete.bind(this, props.id)}>
-      <View style={styles.listItem}>
-        <Text>{props.title}</Text>
-      </View>
-    </TouchableOpacity>
+    <View style={styles.listItem}>
+      <Pressable
+        android_ripple={{ color: "#210644" }}
+        onPress={props.onDelete.bind(this, props.id)}
+        style={({pressed}) => pressed && styles.pressedItem}
+      >
+        <Text style={styles.itemText}>{props.title}</Text>
+      </Pressable>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   listItem: {
-    padding: 10,
-    marginVertical: 10,
-    backgroundColor: "#ccc",
-    borderColor: "black",
-    borderWidth: 1,
+    margin: 8,
+    borderRadius: 6,
+    backgroundColor: "#5e0acc",
   },
+  itemText: {
+    color: "white",
+    padding: 8,
+  },
+  pressedItem: {
+    opacity: .5,
+  }
 });
 
 export default GoalItem;

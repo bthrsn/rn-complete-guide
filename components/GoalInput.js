@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, StyleSheet, Modal } from "react-native";
+import {
+  View,
+  TextInput,
+  Button,
+  StyleSheet,
+  Modal,
+  Image,
+} from "react-native";
 
 const GoalInput = (props) => {
   const [inputGoal, setInputGoal] = useState("");
@@ -14,6 +21,10 @@ const GoalInput = (props) => {
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
+        <Image
+          source={require("../assets/images/goal.png")}
+          style={styles.image}
+        />
         <TextInput
           placeholder="Course Goal"
           style={styles.inputText}
@@ -22,10 +33,10 @@ const GoalInput = (props) => {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="CANCEL" color="red" onPress={props.onCancel} />
+            <Button title="CANCEL" color="#f31282" onPress={props.onCancel} />
           </View>
           <View style={styles.button}>
-            <Button title="ADD" onPress={addGoalHandler} />
+            <Button title="ADD" color="#b180f0" onPress={addGoalHandler} />
           </View>
         </View>
       </View>
@@ -34,25 +45,34 @@ const GoalInput = (props) => {
 };
 
 const styles = StyleSheet.create({
+  image: {
+    width: 100,
+    height: 100,
+    margin: 20,
+  },
   inputContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    padding: 16,
+    backgroundColor: "#311b6b",
   },
   inputText: {
-    width: "80%",
-    borderColor: "black",
+    width: "100%",
+    borderColor: "#e4d0ff",
+    borderRadius: 6,
+    backgroundColor: "#e4d0ff",
+    color: "#120438",
     borderWidth: 1,
-    padding: 10,
-    marginBottom: 10,
+    padding: 16,
   },
   buttonContainer: {
+    marginTop: 16,
     flexDirection: "row",
-    justifyContent: "space-between",
-    width: "60%",
   },
   button: {
-    width: "40%",
+    width: 100,
+    marginHorizontal: 8,
   },
 });
 
